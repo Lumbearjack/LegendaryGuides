@@ -1,0 +1,17 @@
+{
+   "browser_action": {
+      "default_icon": "assets/icon19b.png",
+      "default_popup": "index.html",
+      "default_title": "Legendary Guides"
+   },
+   "description": "Top League of Legends Guides and Counters.",
+   "icons": {
+      "128": "assets/icon128b.png",
+      "48": "assets/icon48b.png"
+   },
+   "manifest_version": 2,
+   "name": "Legendary Guides",
+   "permissions": [ "tabs", "http://lolking.net/*"],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "3.0"
+}
