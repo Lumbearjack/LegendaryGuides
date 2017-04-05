@@ -3,10 +3,17 @@ var legendaryApp = {};
 legendaryApp.key = "23cef05e-21d7-464d-bc92-6294665c2f53";
 baseApiUrl = "https://global.api.pvp.net";
 
-var firebase = require("firebase");
-
 legendaryApp.init = function(){
-legendaryApp.getChamps();
+	// var config = {
+	// 	apiKey: "AIzaSyCExiGLRJ0of3VA-GEAbtVfgC5hugpqZeA",
+	// 	authDomain: "legendaryguides-23852.firebaseapp.com",
+	// 	databaseURL: "https://legendaryguides-23852.firebaseio.com",
+	// 	projectId: "legendaryguides-23852",
+	// 	storageBucket: "legendaryguides-23852.appspot.com",
+	// 	messagingSenderId: "706560566518"
+	// };
+	// firebase.initializeApp(config);
+	legendaryApp.getChamps();
 }
 legendaryApp.getChamps = function(){
 	var champAjax = $.ajax({
@@ -29,7 +36,17 @@ legendaryApp.getChamps = function(){
 			return a.name - b.name
 		})
 		var alphArray = _.sortBy(rawArray, "name");
+		var randoChamp = legendaryApp.getRando(alphArray);
+		console.log(randoChamp);
+		var key = randoChamp.key;
+		var bgImage = randoChamp.skins[0].num;
+		$('.wrapper').css("background-image","linear-gradient(rgba(30,47,47,0),rgba(30,47,47,0.3),rgba(30,47,47,1)), url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"+key+"_"+bgImage+".jpg)");
+
+		// var chronoArray = _.sortBy(rawArray, "id");
+		// console.log(chronoArray);
+		// legendaryApp.champsArray = chronoArray;
 		legendaryApp.champsArray = alphArray;
+
 		legendaryApp.showChampList();
 		legendaryApp.events();
 	})
@@ -45,22 +62,22 @@ legendaryApp.showChampList = function(){
 		var name = champ.name;
 		var title = champ.title;
 		var image = champ.skins[0].num;
+		var tags = champ.tags;
 		var spriteEl = $(`<img class="champSprite content" alt="${name}">`).attr("src","http://ddragon.leagueoflegends.com/cdn/7.4.3/img/champion/"+sprite);
 		var nameEl = $('<h1 class="champName">').text(name);
 		var titleEl = $('<h3 class="champTitle">').text(title);
 		var headerEl = $('<div class="champHeader">').append(nameEl, titleEl);
 		var imageEl = $('<img class="champBlock">').css("background-image","url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"+name+"_"+image+".jpg)")
 		var innerWrapper = $(`<div class="innerWrapper listIconRatio animated">`).append(spriteEl);
-		var champItem = $(`<div class="champItem">`).attr({"id":id, "data-name":name,key}).append(innerWrapper);
+		var champItem = $(`<div class="champItem">`).attr({"id":id, "data-name":name,key,tags}).append(innerWrapper, nameEl);
 
-		// ).attr({"data-test-1": num1, "data-test-2": num2});
-		$('#champGrid').append(champItem.fadeIn('slow'));
+		$('#champGrid').append(champItem).fadeIn('slow');
 	})
 };
 legendaryApp.showChampPage = function(){
 	$('#search').val('');
 	$('#champPage').empty();
-	$('#champList').fadeOut('fast');
+	$('#champList').slideUp('fast');
 	let check = 0;
 	legendaryApp.fighter.forEach(function(champ){
 		// Usable Champ Info
@@ -90,8 +107,9 @@ legendaryApp.showChampPage = function(){
 		var headerTextEl = $('<div class="champHeaderText">').append(nameEl, titleEl);
 		var headerEl = $('<div class="headerBlock">').append(spriteEl,headerTextEl);
 		var contentEl = $('<div class="champStats">').append(statAttackEl,statHpEl,statAspeedEl,statmovespeedEl);
-		var champBlock = $('<div class="champBlock animated flipInX">').append(headerEl,contentEl).css("background-image","url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"+key+"_"+bgImage+".jpg)");
+		var champBlock = $('<div class="champBlock">').append(headerEl,contentEl);
 		var champPage = $('#champPage').append(champBlock);
+		$('.wrapper').css("background-image","linear-gradient(rgba(30,47,47,0),rgba(30,47,47,0.3),rgba(30,47,47,1)), url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"+key+"_"+bgImage+".jpg)");
 		$('#champPage').append(champBlock);
 		$('#champPage').fadeIn('fast');
 	})
@@ -143,25 +161,41 @@ legendaryApp.clickListItem = function(){
 	});
 };
 legendaryApp.filterList = function(){
-	//
-	$('.champItem').on('click' ,function(){
-       var searchText = $(this).val().toLowerCase();
-       
-       $('#champList .champItem').each(function(){
-       	var currentLiText = $(this).attr('data-name').toLowerCase();
-       	showCurrentLi = currentLiText.indexOf(searchText) !== -1;
-           $(this).toggle(showCurrentLi);
-       });
-   });
+	$('#logo').on('click', function(){
+			 var searchText = $(this).val("");   
+			 $('#champList .champItem').each(function(){
+					 $(this).toggle(true);
+			 });
+	});
+	$('#search').on('active', function(){
+			 var searchText = $(this).val("");   
+			 $('#champList .champItem').each(function(){
+					 $(this).toggle(true);
+			 });
+	});
+	$('.tabs li').on('click' ,function(){
+			 var searchText = $(this).attr("id");  
+			 $('#champList .champItem').each(function(){
+				var currentLiText = $(this).attr('tags').toLowerCase();
+				showCurrentLi = currentLiText.indexOf(searchText) !== -1;
+					 $(this).toggle(showCurrentLi);
+			 });
+		});
 	$('#search').keyup(function(){
-       var searchText = $(this).val().toLowerCase();
-       
-       $('#champList .champItem').each(function(){
-       	var currentLiText = $(this).attr('data-name').toLowerCase();
-       	showCurrentLi = currentLiText.indexOf(searchText) !== -1;
-           $(this).toggle(showCurrentLi);
-       });
-   });
+			 var searchTextRaw = $(this).val().toLowerCase();
+			 searchTextSpaceless = searchTextRaw.replace(/\s+/g, '');
+			 searchText = searchTextSpaceless.replace(/[^\w\s]|_/g, '');
+			 //searches for keys and compares via searchText
+			 $('#champList .champItem').each(function(){
+				var currentLiKey = $(this).attr('key').toLowerCase();
+				showCurrentLi = currentLiKey.indexOf(searchText) !== -1;
+					 $(this).toggle(showCurrentLi);
+			 });
+	 });
+}
+legendaryApp.getRando =	function getRandomArrayElement(array) {
+	var randoNum = Math.floor(Math.random()*array.length);
+	return array[randoNum];
 }
 legendaryApp.events =  function(){
 	legendaryApp.clickListItem();

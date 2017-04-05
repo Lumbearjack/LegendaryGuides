@@ -3,54 +3,40 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Legendary Clash</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 	<link rel="stylesheet" href="css/build.css">
 	<link rel="icon" href="assets/icon256b.png" type="image/png">
+	<link rel="stylesheet" href="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 <body>
 	<div class="wrapper">
 		<header>
-			<img src="assets/title2.png" alt="Legendary Clash Logo" class="">
-			<input type="text" id="search" placeholder="Search..." class="">
+			<img src="assets/title2.png" alt="Legendary Clash Logo" id="logo">
+			<input type="text" id="search" placeholder="Search..." class="" autofocus="true">
 			<label for="search"></label>
-			<!-- <h1 class="titleHeader animated fadeInDownBig">Legendary Clash</h1> -->
 		</header>
 		<section id="champList" class="">
-			
-<!-- 			<div id="actions">
-				<div class="aContainer animated fadeInUpBig">
-					<input type='submit' id="pick" value="PICK">
-					<label for="pick"></label>
-					<label for="clear"></label>
-					<input type='submit' id="clear" value="Clear">
-				</div>
-			</div> -->
+			<ul class="tabs">
+				<li id="tank" class="tab">Tank</li>
+				<li id="marksman" class="tab">Marksman</li>
+				<li id="mage" class="tab">Mage</li>
+				<li id="assassin" class="tab">Assassin</li>
+				<li id="fighter" class="tab">Fighter</li>
+				<li id="support" class="tab">Support</li>
+				<li id="" class="tab">X</li>
+			</ul>
 			<div id="champGrid"></div>
 		</section>
 		<section id="champPage"></section>
 
 		
 	</div>
-	<script
-	  src="https://code.jquery.com/jquery-3.1.1.min.js"
-	  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-	  crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<!-- 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script> -->
+  	<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+  	<script type="text/javascript" src="underscore-min.js"></script>
 	<script src="app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
-	<script>
-	  // Initialize Firebase
-	  var config = {
-	    apiKey: "AIzaSyCExiGLRJ0of3VA-GEAbtVfgC5hugpqZeA",
-	    authDomain: "legendaryguides-23852.firebaseapp.com",
-	    databaseURL: "https://legendaryguides-23852.firebaseio.com",
-	    projectId: "legendaryguides-23852",
-	    storageBucket: "legendaryguides-23852.appspot.com",
-	    messagingSenderId: "706560566518"
-	  };
-	  firebase.initializeApp(config);
-	</script>
+	<!-- <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script> -->
 </body>
 </html>

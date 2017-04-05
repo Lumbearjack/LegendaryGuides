@@ -137,7 +137,11 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   src: url("../friz-quadrata-regular.ttf"); }
 
 body {
-  overflow: hidden; }
+  overflow: hidden;
+  background: #1e2f2f; }
+
+img {
+  -webkit-user-drag: none; }
 
 .listIconRatio {
   position: relative;
@@ -146,7 +150,7 @@ body {
     display: block;
     content: " ";
     width: 100%;
-    padding-top: 66.66667%; }
+    padding-top: 62.5%; }
   .listIconRatio .content {
     width: 100%;
     position: absolute;
@@ -157,11 +161,16 @@ body {
 
 .wrapper {
   position: relative;
-  max-width: 800px;
-  width: 100%;
-  padding: 1rem;
+  width: 800px;
+  padding: 0.75rem 1rem;
   margin: auto;
-  background: #1e2f2c; }
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  min-height: 500px;
+  max-height: 500px;
+  border: 1px solid white; }
 
 .inputWrapper {
   width: 100%;
@@ -170,6 +179,37 @@ body {
 
 h1 {
   font-family: 'friz-reg'; }
+
+.tabs {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  padding: 0;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  font-size: 0.75rem;
+  box-shadow: 0px 4px 4px black; }
+
+.tab {
+  transition: all 0.2s ease;
+  padding: 0.25rem;
+  text-align: center;
+  color: #D1AE00;
+  -ms-flex: 4;
+      flex: 4;
+  background: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  outline: none;
+  font-weight: 700; }
+  .tab:first-child {
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px; }
+  .tab:last-child {
+    color: white;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    -ms-flex: 1;
+        flex: 1; }
 
 #champGrid {
   display: -ms-flexbox;
@@ -180,28 +220,51 @@ h1 {
       justify-content: center;
   -ms-flex-align: left;
       align-items: left;
-  margin: 0 -6px 0 0; }
+  margin: 0 -4px 0 0; }
 
 .champItem {
-  width: calc(100%/14); }
+  position: relative; }
+  .champItem .champName {
+    display: none;
+    position: absolute;
+    z-index: 20;
+    left: 50%;
+    transform: translateX(-52%);
+    text-align: center;
+    pointer-events: none;
+    margin: 0.5rem 0 0 0;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    font-family: sans-serif;
+    font-weight: 700;
+    white-space: nowrap;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid gold;
+    border-radius: 4px;
+    color: white;
+    font-size: 0.8rem;
+    background: #1e2f2f; }
+  .champItem:hover .champName {
+    display: block; }
+  .champItem:hover .innerWrapper {
+    transform: scale(1.3);
+    z-index: 15;
+    cursor: pointer;
+    border: 1px solid gold;
+    box-shadow: 0px 2px 0px #F4B80A, 0px 3px 0px #D78A08, 0px 4px 8px black; }
   .champItem .innerWrapper {
-    transition: all 0.15s ease;
-    border: 1px solid black;
+    width: 51px;
+    transition: all 0.15s cubic-bezier(0.42, 0, 0.52, 1.79);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
+    border: 1px solid #EAC300;
     border-radius: 2px;
     margin-right: 4px;
-    margin-bottom: 4px; }
-    .champItem .innerWrapper:hover {
-      transform: scale(1.3);
-      z-index: 15;
-      cursor: pointer;
-      border: 1px solid gold;
-      box-shadow: 0px 2px 0px #F4B80A, 0px 3px 0px #D78A08, 0px 4px 8px black; }
+    margin-bottom: 4px;
+    background: gold; }
   .champItem .champSprite {
-    top: -20%;
-    transform: scale(1.15);
+    top: -25%;
+    transform: scale(1.1);
     object-fit: cover; }
-    .champItem .champSprite img {
-      overflow: hidden; }
 
 .fighter-selected {
   transition: all 0.3s ease;
@@ -216,7 +279,7 @@ header {
   display: -ms-flexbox;
   display: flex;
   height: 32px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.25rem;
   -ms-flex-align: center;
       align-items: center; }
   header img {
@@ -232,17 +295,29 @@ header {
       align-items: center; }
 
 #search {
+  transition: all 0.2s ease;
   width: 30%;
   margin: 0;
-  border: none;
+  border: 1px solid transparent;
   outline: none;
-  border: 1px solid gold;
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.2);
   border-radius: 500px;
-  background: transparent;
-  color: gold;
-  padding: 0.25rem 1rem;
+  color: grey;
+  padding: 0.4rem 1rem;
   font-size: 0.8rem;
   margin: auto 0; }
+  #search:placeholder {
+    color: grey; }
+  #search:hover {
+    color: gold;
+    border: 1px solid gold;
+    background: rgba(0, 0, 0, 0.3); }
+  #search:focus {
+    color: gold;
+    border: 1px solid gold;
+    background: rgba(0, 0, 0, 0.5); }
 
 ::-webkit-input-placeholder {
   color: #AD9000; }
@@ -266,14 +341,16 @@ header {
     -ms-flex-direction: column;
         flex-direction: column;
     width: 100%;
+    height: 100%;
     padding: 1rem;
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-position: right 0% !important;
-    border: 1px solid gold;
+    border: 1px solid rgba(255, 215, 0, 0.6);
+    border-top: 1px solid rgba(255, 215, 0, 0.3);
     border-radius: 10px;
     margin-bottom: 1.5rem;
-    box-shadow: 0px 3px 0px #F4B80A, 0px 6px 0px #D78A08, 0px 8px 8px black; }
+    box-shadow: 0px 2px 0px rgba(255, 215, 0, 0.3), 0px 4px 0px rgba(255, 215, 0, 0.5), 0px 8px 8px rgba(0, 0, 0, 0.7); }
     #champPage .champBlock h1, #champPage .champBlock h2, #champPage .champBlock h3, #champPage .champBlock p {
       color: white; }
     #champPage .champBlock .champSprite {
@@ -284,7 +361,7 @@ header {
       text-shadow: 0px 4px 8px black; }
     #champPage .champBlock img {
       border: 1px solid black;
-      border-radius: 10px; }
+      border-radius: 6px; }
     #champPage .champBlock .champStats {
       display: -ms-flexbox;
       display: flex;
