@@ -9,23 +9,18 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 	font-family: 'friz-bold';
 	src: url('../friz-quadrata-bold.ttf');
 }	
-
 @font-face{
 	font-family: 'friz-reg';
 	src: url('../friz-quadrata-regular.ttf');
 }	
-
-
 @mixin aspect-ratio($width, $height) {
     position: relative;
     &:before{
-      
         display: block;
         content: " ";
         width: 100%;
         padding-top: ($height / $width) * 100%;
     }
-
 	.content {
 		width:100%;
 		position: absolute;
@@ -52,7 +47,6 @@ img{
 	width:800px;
 	padding:0.75rem 1rem;
 	margin:auto;
-	// background: linear-gradient(rgba(30,47,47,0),rgba(30,47,47,1)), url('http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg');
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -68,9 +62,6 @@ img{
 h1{
 	font-family: 'friz-reg';
 }
-#champList{
-	// display:flex;
-}
 .tabs{
 	margin:0;
 	margin-bottom:0.5rem;
@@ -78,30 +69,45 @@ h1{
 	display:flex;
 	list-style: none;
 	font-size:0.75rem;
-	box-shadow: 0px 4px 4px black;
-}
-.tab{
-	transition:all 0.2s ease;
-	padding:0.25rem;
-	text-align: center;
-	color:#D1AE00;
-	flex:4;
-	background: rgba(0,0,0,0.7);
-	cursor:pointer;
-	outline:none;
-	font-weight:700;
-	&:hover{
+	background:rgba(30,47,47,0.4);
+	box-shadow: 0px 2px 4px rgba(0,0,0,0.5);
+	border:1px solid gold;
+	border-radius:4px;
+	.tab{
+		display:none;
 	}
-
-	&:first-child{
-		border-bottom-left-radius: 4px;
-		border-top-left-radius: 4px;
+	.tab:checked + label{
+		background:#D1AE00;
+		color:black;
+		&:last-of-type{
+			color:red;
+			background:darkred;
+			flex:1;
+		}
 	}
-	&:last-child{
-		color:white;
-		border-bottom-right-radius: 4px;
-		border-top-right-radius: 4px;
-		flex:1;
+	label{
+		transition:all 0.2s ease;
+		padding:0.3rem;
+		text-align: center;
+		color:#D1AE00;
+		flex:3;
+		cursor:pointer;
+		outline:none;
+		font-weight:700;
+		&:hover{
+			color:gold;
+			background:rgba(255,255,255,0.2);
+		}
+		&:first-of-type{
+			border-bottom-left-radius: 4px;
+			border-top-left-radius: 4px;
+		}
+		&:last-of-type{
+			color:red;
+			border-bottom-right-radius: 4px;
+			border-top-right-radius: 4px;
+			flex:1;
+		}
 	}
 }
 #champGrid{

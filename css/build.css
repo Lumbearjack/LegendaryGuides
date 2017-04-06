@@ -188,28 +188,42 @@ h1 {
   display: flex;
   list-style: none;
   font-size: 0.75rem;
-  box-shadow: 0px 4px 4px black; }
-
-.tab {
-  transition: all 0.2s ease;
-  padding: 0.25rem;
-  text-align: center;
-  color: #D1AE00;
-  -ms-flex: 4;
-      flex: 4;
-  background: rgba(0, 0, 0, 0.7);
-  cursor: pointer;
-  outline: none;
-  font-weight: 700; }
-  .tab:first-child {
-    border-bottom-left-radius: 4px;
-    border-top-left-radius: 4px; }
-  .tab:last-child {
-    color: white;
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
-    -ms-flex: 1;
-        flex: 1; }
+  background: rgba(30, 47, 47, 0.4);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+  border: 1px solid gold;
+  border-radius: 4px; }
+  .tabs .tab {
+    display: none; }
+  .tabs .tab:checked + label {
+    background: #D1AE00;
+    color: black; }
+    .tabs .tab:checked + label:last-of-type {
+      color: red;
+      background: darkred;
+      -ms-flex: 1;
+          flex: 1; }
+  .tabs label {
+    transition: all 0.2s ease;
+    padding: 0.3rem;
+    text-align: center;
+    color: #D1AE00;
+    -ms-flex: 3;
+        flex: 3;
+    cursor: pointer;
+    outline: none;
+    font-weight: 700; }
+    .tabs label:hover {
+      color: gold;
+      background: rgba(255, 255, 255, 0.2); }
+    .tabs label:first-of-type {
+      border-bottom-left-radius: 4px;
+      border-top-left-radius: 4px; }
+    .tabs label:last-of-type {
+      color: red;
+      border-bottom-right-radius: 4px;
+      border-top-right-radius: 4px;
+      -ms-flex: 1;
+          flex: 1; }
 
 #champGrid {
   display: -ms-flexbox;

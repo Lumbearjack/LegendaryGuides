@@ -162,34 +162,34 @@ legendaryApp.clickListItem = function(){
 };
 legendaryApp.filterList = function(){
 	$('#logo').on('click', function(){
-			 var searchText = $(this).val("");   
-			 $('#champList .champItem').each(function(){
-					 $(this).toggle(true);
-			 });
+		var searchText = $(this).val("");   
+		$('#champList .champItem').each(function(){
+			 $(this).toggle(true);
+		});
 	});
 	$('#search').on('active', function(){
-			 var searchText = $(this).val("");   
-			 $('#champList .champItem').each(function(){
-					 $(this).toggle(true);
-			 });
-	});
-	$('.tabs li').on('click' ,function(){
-			 var searchText = $(this).attr("id");  
-			 $('#champList .champItem').each(function(){
-				var currentLiText = $(this).attr('tags').toLowerCase();
-				showCurrentLi = currentLiText.indexOf(searchText) !== -1;
-					 $(this).toggle(showCurrentLi);
-			 });
+		var searchText = $(this).val("");   
+		$('#champList .champItem').each(function(){
+			 $(this).toggle(true);
 		});
+	});
+	$('.tabs label').on('click' ,function(){
+		var searchText = $(this).attr("id");  
+		$('#champList .champItem').each(function(){
+			var currentLiText = $(this).attr('tags').toLowerCase();
+			showCurrentLi = currentLiText.indexOf(searchText) !== -1;
+			$(this).toggle(showCurrentLi);
+		});
+	});
 	$('#search').keyup(function(){
 			 var searchTextRaw = $(this).val().toLowerCase();
 			 searchTextSpaceless = searchTextRaw.replace(/\s+/g, '');
 			 searchText = searchTextSpaceless.replace(/[^\w\s]|_/g, '');
 			 //searches for keys and compares via searchText
 			 $('#champList .champItem').each(function(){
-				var currentLiKey = $(this).attr('key').toLowerCase();
-				showCurrentLi = currentLiKey.indexOf(searchText) !== -1;
-					 $(this).toggle(showCurrentLi);
+					var currentLiKey = $(this).attr('key').toLowerCase();
+					showCurrentLi = currentLiKey.indexOf(searchText) !== -1;
+					$(this).toggle(showCurrentLi);
 			 });
 	 });
 }

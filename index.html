@@ -17,15 +17,29 @@
 			<label for="search"></label>
 		</header>
 		<section id="champList" class="">
-			<ul class="tabs">
-				<li id="tank" class="tab">Tank</li>
-				<li id="marksman" class="tab">Marksman</li>
-				<li id="mage" class="tab">Mage</li>
-				<li id="assassin" class="tab">Assassin</li>
-				<li id="fighter" class="tab">Fighter</li>
-				<li id="support" class="tab">Support</li>
-				<li id="" class="tab">X</li>
-			</ul>
+			<form class="tabs">
+				<input type="radio" name="role" id="tank" class="tab">
+				<label for="tank" id="tank">Tank</label>
+
+				<input type="radio" name="role" id="fighter" class="tab">
+				<label for="fighter" id="fighter">Fighter</label>
+
+				<input type="radio" name="role" id="assassin" class="tab">
+				<label for="assassin" id="assassin">Assassin</label>
+
+				<input type="radio" name="role" id="mage" class="tab">
+				<label for="mage" id="mage">Mage</label>
+
+				<input type="radio" name="role" id="marksman" class="tab">
+				<label for="marksman" id="marksman">Marksman</label>
+
+				<input type="radio" name="role" id="support" class="tab">
+				<label for="support" id="support">Support</label>
+
+				<input type="radio" name="role" id="x" class="tab">
+				<label for="x" id="">X</label>
+
+			</form>
 			<div id="champGrid"></div>
 		</section>
 		<section id="champPage"></section>
