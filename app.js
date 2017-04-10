@@ -162,7 +162,8 @@ legendaryApp.clickListItem = function(){
 };
 legendaryApp.filterList = function(){
 	$('#logo').on('click', function(){
-		var searchText = $(this).val("");   
+		var searchText = $(this).val("");
+		$('input').prop('checked', false);
 		$('#champList .champItem').each(function(){
 			 $(this).toggle(true);
 		});

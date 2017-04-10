@@ -211,7 +211,8 @@ h1 {
         flex: 3;
     cursor: pointer;
     outline: none;
-    font-weight: 700; }
+    font-weight: 700;
+    border-right: 1px solid gold; }
     .tabs label:hover {
       color: gold;
       background: rgba(255, 255, 255, 0.2); }
@@ -222,6 +223,7 @@ h1 {
       color: red;
       border-bottom-right-radius: 4px;
       border-top-right-radius: 4px;
+      border: none;
       -ms-flex: 1;
           flex: 1; }
 
@@ -268,7 +270,6 @@ h1 {
     box-shadow: 0px 2px 0px #F4B80A, 0px 3px 0px #D78A08, 0px 4px 8px black; }
   .champItem .innerWrapper {
     width: 51px;
-    transition: all 0.15s cubic-bezier(0.42, 0, 0.52, 1.79);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
     border: 1px solid #EAC300;
     border-radius: 2px;
