@@ -19,18 +19,18 @@ gulp.task('styles', () => {
 });
 
 
-// gulp.task('javascript', () => {
-//     return gulp.src('./app.js')
-//     .pipe(babel({
-//         presets: ['es2015']
-//         }))
-//     .pipe(gulp.dest('./public/scripts'))
-//     .pipe(reload({stream: true}));
+gulp.task('javascript', () => {
+    return gulp.src('./app.js')
+    .pipe(babel({
+        presets: ['es2015']
+        }))
+    .pipe(gulp.dest('./public/scripts'))
+    .pipe(reload({stream: true}));
 
-// });
+});
 
 gulp.task('watch', () => {
-  // gulp.watch('./*.js', ['javascript']);
+  gulp.watch('./*.js', ['javascript']);
   gulp.watch('./*.scss', ['styles']);
   gulp.watch('*.html', reload);
 });

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Legendary Clash</title>
+	<title>Legendary Guides</title>
 	<link rel="stylesheet" href="css/build.css">
 	<link rel="icon" href="assets/icon256b.png" type="image/png">
 	<link rel="stylesheet" href="">
@@ -11,6 +11,7 @@
 </head>
 <body>
 	<div class="wrapper">
+		<div class="bgOverlay"></div>
 		<header>
 			<img src="assets/title2.png" alt="Legendary Clash Logo" id="logo">
 			<input type="text" id="search" placeholder="Search..." class="" autofocus="true">
@@ -18,26 +19,26 @@
 		</header>
 		<section id="champList" class="">
 			<form class="tabs">
-				<input type="radio" name="role" id="tank" class="tab">
+				<input type="checkbox" name="role" id="tank" class="tab">
 				<label for="tank" id="tank">Tank</label>
 
-				<input type="radio" name="role" id="fighter" class="tab">
+				<input type="checkbox" name="role" id="fighter" class="tab">
 				<label for="fighter" id="fighter">Fighter</label>
 
-				<input type="radio" name="role" id="assassin" class="tab">
+				<input type="checkbox" name="role" id="assassin" class="tab">
 				<label for="assassin" id="assassin">Assassin</label>
 
-				<input type="radio" name="role" id="mage" class="tab">
+				<input type="checkbox" name="role" id="mage" class="tab">
 				<label for="mage" id="mage">Mage</label>
 
-				<input type="radio" name="role" id="marksman" class="tab">
+				<input type="checkbox" name="role" id="marksman" class="tab">
 				<label for="marksman" id="marksman">Marksman</label>
 
-				<input type="radio" name="role" id="support" class="tab">
+				<input type="checkbox" name="role" id="support" class="tab">
 				<label for="support" id="support">Support</label>
 
-				<input type="radio" name="role" id="x" class="tab">
-				<label for="x" id="">X</label>
+				<input type="checkbox" name="role" id="x" class="tab">
+				<label for="x" id="x">X</label>
 
 			</form>
 			<div id="champGrid"></div>
